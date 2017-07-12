@@ -1,0 +1,11 @@
+- technology stack
+  - eclipse oxygen
+  - JBoss EAP 7.1.0 Beta (would need to pay in case of production use)
+  - Java 8
+  - Hibernate 5
+
+- install JBoss EAP 7.1.0 Beta
+  - https://developers.redhat.com/products/eap/download/
+- install eclipse oxygen
+  - eclipse marketplace: Eclipse Class Decompiler
+  - eclipse marketplace: JBoss Tools
