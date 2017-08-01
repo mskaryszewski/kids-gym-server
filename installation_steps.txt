@@ -1,10 +1,4 @@
-- technology stack
-  - eclipse oxygen
-  - JBoss EAP 7.1.0 Beta (would need to pay in case of production use)
-  - Java 8
-  - Hibernate 5
-
-- github steps
+- steps to configure a new project in github
 	- add to .gitignore
 		*.class
 		*.jar
@@ -25,6 +19,8 @@
 		.settings/
 		.project
 		.classpath
+    - .classpath and .project should never be added to repository - they should be calculated every time by eclipse
+
 - eclipse installation steps
     - install JBoss EAP 7.1.0 Beta
         - https://developers.redhat.com/products/eap/download/
@@ -33,14 +29,15 @@
         - eclipse marketplace: Eclipse Class Decompiler
         - eclipse marketplace: JBoss Tools
         - Create a New Red Hat JBoss Enterprise Application Platform 7.1
-    - import project from GitHub
-        - Right mouse click on Project Explorer/Import/Git/Projects from Git
-        - Clone URI
-        - URI: https://github.com/mskaryszewski/kids-gym-server
-        	- always full project path, not specific branch, choosing a branch will come in next step
-        - Local Destination: define workspace location
-        - Import using the New Project wizard
-        - create Maven Project or any other
+
+- how to import project from github
+    - Right mouse click on Project Explorer/Import/Git/Projects from Git
+    - Clone URI
+    - URI: https://github.com/mskaryszewski/kids-gym-server
+        - always full project path, not specific branch, choosing a branch will come in next step
+    - Local Destination: define workspace location
+    - eclipse clean build eclipse:clean eclipse:eclipse
+    - import existing projects into workspace
 
 - How to create a multimodule maven project
     - create parent project
@@ -48,8 +45,30 @@
     - create child modules
         - right click on parent project - new maven module
         - packaging: jar
+    - ejb module
+        - create it as a normal maven module
+        - you don't need to convert it to facet form
+            - if you don't convert it, you just won't be able to create a new EJB using eclipse wizard and deploy it directly on application server, but you can create EJB yourself manually
     - create ear application module
         - right click on parent project - new maven module
         - packaging: ear
         - add dependencies from other modules
-        
+
+- tips and tricks
+    - you don't have to change facet for ejb and ear modules
+
+- Project details
+    - technology stack
+        - eclipse oxygen
+        - JBoss EAP 7.1.0 Beta (would need to pay in case of production use)
+        - Java 8
+        - Hibernate 5
+
+- status
+    - application structure is ready
+    - user can download code from github, build it and create .ear file
+- todo
+    - create EJB entity
+    - create a standalone client which uses remote EJB beans
+    - create hibernate entities
+    - create a remote web client uses remote EJB beans
