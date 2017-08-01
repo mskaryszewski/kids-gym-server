@@ -43,5 +43,10 @@
   		<artifactId>kids-gym-entities</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>com.kidsgym</groupId>
+  		<artifactId>kids-gym-library</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>
