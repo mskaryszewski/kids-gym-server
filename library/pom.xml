@@ -9,8 +9,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>kids-gym-library</artifactId>
-
-	<name>library</name>
 	
 	<description>Shared libraries</description>
 
