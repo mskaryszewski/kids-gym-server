@@ -1,15 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>kids-gym-server</groupId>
-  <artifactId>kids-gym-server</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
-  
-  	<name>kids-gym-server</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.kidsgym</groupId>
+	<artifactId>kids-gym-parent-all</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>kids-gym-server</name>
 	<description>Server side of gym for kids application</description>
 	<inceptionYear>2017</inceptionYear>
-  
-  	<developers>
+
+	<modules>
+		<module>library</module>
+		<module>asds</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<developers>
 		<developer>
 			<id>1</id>
 			<name>Michal Skaryszewski</name>
@@ -20,15 +35,17 @@
 			</roles>
 		</developer>
 	</developers>
-	
+
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/mskaryszewski/kids-gym-server/issues</url>
 	</issueManagement>
-	
+
 	<scm>
 		<connection>scm:git:git@github.com:mskaryszewski/kids-gym-server.git</connection>
 		<developerConnection>scm:git:git@github.com:mskaryszewski/kids-gym-server.git</developerConnection>
 		<url>https://github.com/mskaryszewski/kids-gym-server</url>
 	</scm>
+
+
 </project>

@@ -4,7 +4,28 @@
   - Java 8
   - Hibernate 5
 
-- steps
+- github steps
+	- add to .gitignore
+		*.class
+		*.jar
+		*.war
+		*.ear
+		*.zip
+		*.tar.gz
+		*.rar
+		hs_err_pid*
+		/target/
+		.metadata
+		bin/
+		tmp/
+		*.tmp
+		*.bak
+		*.swp
+		local.properties
+		.settings/
+		.project
+		.classpath
+- eclipse installation steps
     - install JBoss EAP 7.1.0 Beta
         - https://developers.redhat.com/products/eap/download/
         - add ManagementUser by running add-user.bat
@@ -16,6 +37,7 @@
         - Right mouse click on Project Explorer/Import/Git/Projects from Git
         - Clone URI
         - URI: https://github.com/mskaryszewski/kids-gym-server
+        	- always full project path, not specific branch, choosing a branch will come in next step
         - Local Destination: define workspace location
         - Import using the New Project wizard
         - create Maven Project or any other
