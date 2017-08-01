@@ -15,6 +15,7 @@
 		<module>config</module>
 		<module>resources</module>
 		<module>entities</module>
+		<module>ejb</module>
 	</modules>
 
 	<dependencies>
