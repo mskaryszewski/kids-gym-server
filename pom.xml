@@ -12,7 +12,8 @@
 
 	<modules>
 		<module>library</module>
-		<module>asds</module>
+		<module>config</module>
+		<module>resources</module>
 	</modules>
 
 	<dependencies>
