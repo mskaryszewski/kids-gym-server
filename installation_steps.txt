@@ -4,8 +4,30 @@
   - Java 8
   - Hibernate 5
 
-- install JBoss EAP 7.1.0 Beta
-  - https://developers.redhat.com/products/eap/download/
-- install eclipse oxygen
-  - eclipse marketplace: Eclipse Class Decompiler
-  - eclipse marketplace: JBoss Tools
+- steps
+    - install JBoss EAP 7.1.0 Beta
+        - https://developers.redhat.com/products/eap/download/
+        - add ManagementUser by running add-user.bat
+    - install eclipse oxygen
+        - eclipse marketplace: Eclipse Class Decompiler
+        - eclipse marketplace: JBoss Tools
+        - Create a New Red Hat JBoss Enterprise Application Platform 7.1
+    - import project from GitHub
+        - Right mouse click on Project Explorer/Import/Git/Projects from Git
+        - Clone URI
+        - URI: https://github.com/mskaryszewski/kids-gym-server
+        - Local Destination: define workspace location
+        - Import using the New Project wizard
+        - create Maven Project or any other
+
+- How to create a multimodule maven project
+    - create parent project
+        - type of packaging: pom
+    - create child modules
+        - right click on parent project - new maven module
+        - packaging: jar
+    - create ear application module
+        - right click on parent project - new maven module
+        - packaging: ear
+        - add dependencies from other modules
+        
