@@ -72,3 +72,4 @@
     - create a standalone client which uses remote EJB beans
     - create hibernate entities
     - create a remote web client uses remote EJB beans
+    - expose rest service

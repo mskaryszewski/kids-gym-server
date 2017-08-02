@@ -6,8 +6,10 @@
 		<artifactId>kids-gym-parent-all</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
 	<artifactId>kids-gym-ejb</artifactId>
 	<description>Enterprise JavaBeans</description>
+	<packaging>ejb</packaging>
 
 	<dependencies>
 		<dependency>
@@ -26,10 +28,11 @@
 				<artifactId>maven-ejb-plugin</artifactId>
 				<configuration>
 					<ejbVersion>3.0</ejbVersion>
+					<!-- generate additional client JAR with interfaces only, it will be exposed to client apps, they do not need remote interface implementations (EJBs) -->
+					<generateClient>true</generateClient>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	<packaging>ejb</packaging>
 
 </project>
