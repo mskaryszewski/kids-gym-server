@@ -17,6 +17,7 @@
 		<module>entities</module>
 		<module>ejb</module>
 		<module>kids-gym-app</module>
+		<module>kids-gym-client-standalone</module>
 	</modules>
 
 	<dependencies>

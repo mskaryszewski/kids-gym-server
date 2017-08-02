@@ -14,6 +14,6 @@ public class HelloBean implements RemoteHello {
 	@Override
 	public String hello() {
 		System.out.println("HELLO");
-		return null;
+		return "hello from bean!";
 	}
 }
