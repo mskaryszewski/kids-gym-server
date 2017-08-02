@@ -32,7 +32,7 @@ public enum RemoteEjbGetter {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public <U> U getRemoteEjbAndCast(Class clazz) throws NamingException {
+	public <U> U getRemoteEjb(Class clazz) throws NamingException {
 		final String interfaceName = clazz.getName();
 		String lookupName = generateLookupName(interfaceName);
 		return (U) context.lookup(lookupName);
