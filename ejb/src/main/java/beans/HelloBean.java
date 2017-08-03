@@ -1,9 +1,11 @@
 package beans;
 
 import javax.ejb.Stateless;
+import entity.dao.PersonDAO;
 
 @Stateless
 public class HelloBean implements RemoteHello {
+	
 
     /**
      * Default constructor. 
@@ -13,7 +15,8 @@ public class HelloBean implements RemoteHello {
 
 	@Override
 	public String hello() {
-		System.out.println("HELLO");
+		PersonDAO personDao = new PersonDAO();
+		personDao.performMultipleThings();
 		return "hello from bean!";
 	}
 }

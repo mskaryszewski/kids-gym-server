@@ -54,6 +54,46 @@
         - packaging: ear
         - add dependencies from other modules
 
+- how to add new datasource and use it by hibernate - example for derbyDB
+    - good description:
+        http://www.hameister.org/JBoss_DatasourceDerby.html
+        http://docs.kony.com/konylibrary/messaging/kms_console_installer_manual_guide-linux/Content/Configure_JBoss1.htm
+    - deploy a driver that datasource will be using as jboss module
+        - create directory <JBOSS_HOME>\modules\system\layers\base\org\apache\derby\main
+        - create file module.xm;
+            <?xml version="1.0" encoding="UTF-8"?>
+            <module xmlns="urn:jboss:module:1.0" name="org.apache.derby">
+                <resources>
+                    <resource-root path="derbyclient.jar"/>
+                </resources>
+                <dependencies>
+                    <module name="javax.api"/>
+                </dependencies>
+            </module>
+        - copy the Derby JDBC driver derbyclient.jar into the directory (jar file is located in derby's directory)
+        - add to standalone.xml definition of datasource and driver that this datasource is using
+            <datasource jndi-name="java:/DerbyDS" pool-name="DerbyDS" enabled="true" use-ccm="false">
+               <connection-url>jdbc:derby://localhost:1527/derbyDB;create=true</connection-url>
+               <driver>org.apache.derby</driver>
+               <security>
+                    <user-name>demo</user-name>
+                    <password>demo</password>
+               </security>
+               <validation>
+                    <validate-on-match>false</validate-on-match>
+                    <background-validation>false</background-validation>
+               </validation>
+               <statement>
+                    <share-prepared-statements>false</share-prepared-statements>
+               </statement>
+            </datasource>
+            <drivers>
+               <driver name="org.apache.derby" module="org.apache.derby">
+                   <xa-datasource-class>org.apache.derby.jdbc.ClientXADataSource</xa-datasource-class>
+               </driver>
+            </drivers>
+
+
 - tips and tricks
     - you don't have to change facet for ejb and ear modules
 
