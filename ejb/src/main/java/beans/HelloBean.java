@@ -5,13 +5,12 @@ import entity.dao.PersonDAO;
 
 @Stateless
 public class HelloBean implements RemoteHello {
-	
 
-    /**
-     * Default constructor. 
-     */
-    public HelloBean() {
-    }
+	/**
+	 * Default constructor.
+	 */
+	public HelloBean() {
+	}
 
 	@Override
 	public String hello() {

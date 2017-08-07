@@ -63,16 +63,16 @@ public class PersonDAO implements HibernateGenericSQL<Person>, PersonSQL {
 		try {
 			Person person = (Person) session.get(Person.class, 237L);
 			System.out.println("LOADED");
-			session.getTransaction().commit();
+			//session.getTransaction().commit();
 			
 			session = HibernateUtil.getSession();
-			session.beginTransaction();
+			//session.beginTransaction();
 			session.update(person);
 
 			person.setAge(1232);
 			session.update(person);
 			person.setAge(1102);
-			session.getTransaction().commit();
+			//session.getTransaction().commit();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -107,9 +107,19 @@
 - status
     - application structure is ready
     - user can download code from github, build it and create .ear file
+    - ear is packed with ejb.jar and entities.jar
+
 - todo
-    - create EJB entity
-    - create a standalone client which uses remote EJB beans
-    - create hibernate entities
+    - clean the code
+    - merge it to master branch
+    - check how I can manage my own transactions (commit + rollback)
+        - is there any configuration in standalone.xml or in hibernate.cfg.xml?
     - create a remote web client uses remote EJB beans
-    - expose rest service
+    - logging framework
+    - implement mail server
+    - callbacks
+    - interceptors
+    - timers
+    - expose REST service
+    - write GUI in JSF
+
