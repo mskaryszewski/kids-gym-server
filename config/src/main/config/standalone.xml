@@ -152,9 +152,29 @@
                         <password>sa</password>
                     </security>
                 </datasource>
+                <datasource jta="true" jndi-name="java:jboss/datasources/derbyDS" pool-name="derbyDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:derby://localhost:1527/derbyDB</connection-url>
+                    <driver>org.apache.derby</driver>
+                    <security>
+                        <user-name>michal</user-name>
+                        <password>michal</password>
+                    </security>
+                    <pool>
+                        <min-pool-size>20</min-pool-size>
+                        <max-pool-size>800</max-pool-size>
+                    </pool>
+                    <validation>
+                        <!-- <check-valid-connection-sql>SELECT 1 FROM DUAL</check-valid-connection-sql> -->
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                    </validation>
+                </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="org.apache.derby" module="org.apache.derby">
+                        <xa-datasource-class>org.apache.derby.jdbc.ClientXADataSource</xa-datasource-class>
                     </driver>
                 </drivers>
             </datasources>
@@ -314,8 +334,8 @@
         <subsystem xmlns="urn:jboss:domain:pojo:1.0"/>
         <subsystem xmlns="urn:jboss:domain:remoting:4.0">
             <endpoint/>
-            <http-connector name="http-remoting-connector" connector-ref="default" security-realm="ApplicationRealm"/>
             <connector name="remoting-connector" socket-binding="remoting" security-realm="ApplicationRealm"/>
+            <http-connector name="http-remoting-connector" connector-ref="default" security-realm="ApplicationRealm"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:resource-adapters:5.0"/>
         <subsystem xmlns="urn:jboss:domain:request-controller:1.0"/>

@@ -1,4 +1,4 @@
-package app.client;
+package com.skaryszewski.kidsgym.client.util;
 
 import java.util.Properties;
 
@@ -9,19 +9,19 @@ import javax.naming.NamingException;
 /**
  * This class retrieves EJBs by calculating given interfaceName class by removing packageName.Remote prefix and adding Bean suffix.
  * Example:
- *   InterfaceName: this.is.my.package.RemoteCalculator
- *   calculated BeanName: CalculatorBean
+ *   InterfaceName: this.is.my.package.RemotePerson
+ *   calculated BeanName: PersonBean
  * 
  * For all beans/interfaces that do not follow this convention, remote EJB will not be retrieved correctly.
  * 
- * @author Michal
+ * @author Michal Skaryszewski
  *
  */
-public enum RemoteEjbGetter {
+public enum ServiceUtil {
 	
 	INSTANCE;
 	
-	private RemoteEjbGetter() {
+	private ServiceUtil() {
 		Properties properties = new Properties();
 		properties.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
 		try {
@@ -32,18 +32,18 @@ public enum RemoteEjbGetter {
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public <U> U getRemoteEjb(Class clazz) throws NamingException {
+	public <U> U getService(Class clazz) throws NamingException {
 		final String interfaceName = clazz.getName();
 		String lookupName = generateLookupName(interfaceName);
 		return (U) context.lookup(lookupName);
 	}
 	
 	private String generateLookupName (String interfaceName) {
-		final String beanName   = getBeanName(interfaceName);
+		final String beanName   = createBeanName(interfaceName);
 		return "ejb:" + APP_NAME + "/" + EJB_MODULE_NAME + "/" + beanName + "!" + interfaceName;
 	}
 	
-	private String getBeanName(String interfaceName) {
+	private String createBeanName(String interfaceName) {
 		return interfaceName.replaceFirst(".*Remote", "").concat("Bean");
 	}
 	

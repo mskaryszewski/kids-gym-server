@@ -110,16 +110,14 @@
     - ear is packed with ejb.jar and entities.jar
 
 - todo
-    - clean the code
-    - merge it to master branch
+    - expose REST service
+    - connect to Cassandra DB
     - check how I can manage my own transactions (commit + rollback)
         - is there any configuration in standalone.xml or in hibernate.cfg.xml?
-    - create a remote web client uses remote EJB beans
     - logging framework
     - implement mail server
     - callbacks
     - interceptors
     - timers
-    - expose REST service
     - write GUI in JSF
 
