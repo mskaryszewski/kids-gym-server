@@ -1,4 +1,4 @@
-package entity;
+package com.skaryszewski.kidsgym.entity;
 
 import java.io.Serializable;
 

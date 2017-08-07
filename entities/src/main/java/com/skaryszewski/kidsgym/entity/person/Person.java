@@ -1,4 +1,6 @@
-package entity;
+package com.skaryszewski.kidsgym.entity.person;
+
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,8 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Person {
+public class Person implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
@@ -41,5 +45,10 @@ public class Person {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", name=" + name + ", age=" + age + "]";
 	}
 }

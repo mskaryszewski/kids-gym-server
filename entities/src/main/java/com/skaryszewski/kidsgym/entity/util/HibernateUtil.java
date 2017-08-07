@@ -1,4 +1,4 @@
-package util;
+package com.skaryszewski.kidsgym.entity.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,14 +30,7 @@ public class HibernateUtil {
 	public static <U> U executeInTransaction(DbOperation<U> dbOperation) {
 		Session session = HibernateUtil.getSession();
 		session.beginTransaction();
-		U result = null;
-		try {
-			result = dbOperation.execute(session);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-		}
-		return result;
+		return dbOperation.execute(session);
 	}
 
 }

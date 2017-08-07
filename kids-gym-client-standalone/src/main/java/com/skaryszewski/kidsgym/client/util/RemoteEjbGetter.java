@@ -1,4 +1,4 @@
-package app.client;
+package com.skaryszewski.kidsgym.client.util;
 
 import java.util.Properties;
 

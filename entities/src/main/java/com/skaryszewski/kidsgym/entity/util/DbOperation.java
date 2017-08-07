@@ -1,4 +1,4 @@
-package util;
+package com.skaryszewski.kidsgym.entity.util;
 
 import org.hibernate.Session;
 
