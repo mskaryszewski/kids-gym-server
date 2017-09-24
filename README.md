@@ -11,7 +11,8 @@ You are right, they are not there. Actually it's not the purpose of this project
 I am focused on creation a powerful skeleton of enterprise application which is maintainable and well structured. This is what fascinates me the most - pure architecture, good practices and cooperation between modules. When I achieve that (well defined communication to RDBMS and noSQL database, RESTful Web Service, exposed remote services etc.), coding the logic of (any) application will be a piece of cake.
 
 The structure of the application is as follows:
--  kids-gym-entities - EJB entities to be persisted in a DB, they are exposed by DAO. It is advisable not to use DAO directly, we should use a dedicated service:
+- kids-gym-restful exposes web services with REST API
+- kids-gym-entities - EJB entities to be persisted in a DB, they are exposed by DAO. It is advisable not to use DAO directly, we should use a dedicated service:
 	- Example:
 		- Child (entity) accessed by ChildDAO implementing interface with save(), get(), update() methods
 		- ChildDAO is accessed by ChildBean implementing RemoteChild interface
