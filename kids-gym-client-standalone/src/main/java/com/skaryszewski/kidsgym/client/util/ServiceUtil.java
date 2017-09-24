@@ -9,8 +9,8 @@ import javax.naming.NamingException;
 /**
  * This class retrieves EJBs by calculating given interfaceName class by removing packageName.Remote prefix and adding Bean suffix.
  * Example:
- *   InterfaceName: this.is.my.package.RemotePerson
- *   calculated BeanName: PersonBean
+ *   InterfaceName: this.is.my.package.RemoteChild
+ *   calculated BeanName: ChildBean
  * 
  * For all beans/interfaces that do not follow this convention, remote EJB will not be retrieved correctly.
  * 

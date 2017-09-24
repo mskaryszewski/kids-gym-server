@@ -1,4 +1,4 @@
-package com.skaryszewski.kidsgym.entity.person;
+package com.skaryszewski.kidsgym.entity.child;
 
 import java.io.Serializable;
 
@@ -7,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @Entity
-public class Person implements Serializable {
+public class Child implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -49,6 +51,6 @@ public class Person implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name + ", age=" + age + "]";
+		return "Child [id=" + id + ", name=" + name + ", age=" + age + "]";
 	}
 }

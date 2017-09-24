@@ -21,6 +21,15 @@
 					<includeInApplicationXml>true</includeInApplicationXml>
 					<includeLibInApplicationXml>true</includeLibInApplicationXml>
 					<defaultLibBundleDir>APP-INF/lib</defaultLibBundleDir>
+					<!-- <modules>
+			            <webModule>
+			                <groupId>com.kidsgym</groupId>
+			                <artifactId>kids-gym-restful</artifactId>
+			                <uri>kids-gym-restful.war</uri>
+			                <bundleFileName>kids-gym-restful.war</bundleFileName>
+			                <contextRoot>/kids-gym-app</contextRoot>
+			            </webModule>
+			        </modules> -->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -48,5 +57,11 @@
 			<artifactId>kids-gym-library</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- <dependency>
+			<groupId>com.kidsgym</groupId>
+			<artifactId>kids-gym-restful</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency> -->
 	</dependencies>
 </project>
