@@ -1,8 +1,8 @@
 package org.kids.gym.restful.resources;
 
+import java.net.URI;
 import java.util.List;
 
-import javax.management.MXBean;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -12,13 +12,20 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
+import org.kids.gym.restful.exception.DataNotFoundException;
+
+import javax.ws.rs.core.UriInfo;
 
 import com.skaryszewski.kidsgym.beans.ChildBean;
 import com.skaryszewski.kidsgym.entity.child.Child;
 
 @Path("children")
-@Produces(MediaType.APPLICATION_XML)
+@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ChildResource {
 	
@@ -27,8 +34,15 @@ public class ChildResource {
 
     @GET
     @Path("/{id}")
-    public Child getChild(@PathParam("id") long childId) {
-        return service.getChild(childId);
+    public Response getChild(@PathParam("id") long childId) {
+    	Child child = service.getChild(childId);
+    	if(null == child) {
+    		throw new DataNotFoundException(String.format("Child with id [%d] not found", childId));
+    	}
+    	return Response
+    			.status(Status.CREATED)
+    			.entity(child)
+    			.build();
     }
     
     @GET
@@ -41,8 +55,18 @@ public class ChildResource {
     }
     
     @POST
-    public Child addChild(Child child) {
-    	return service.saveChild(child);
+    public Response addChild(Child child, @Context UriInfo uriInfo) {
+    	
+    	Child newChild = service.saveChild(child);
+    	
+    	URI uri = uriInfo
+    			.getAbsolutePathBuilder()
+    			.path(String.valueOf(child.getId()))
+    			.build();
+    	
+    	return Response.created(uri)
+    			.entity(newChild)
+    			.build();
     }
     
     @PUT
