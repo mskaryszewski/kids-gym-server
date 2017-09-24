@@ -9,5 +9,6 @@ public interface HibernateGenericSQL<T> {
 	T get(Long id);
 	List<T> getAll();
 	void update(T entity);
+	void delete(long id);
 	
 }

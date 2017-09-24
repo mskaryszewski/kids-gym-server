@@ -37,11 +37,20 @@ public class ChildBean implements RemoteChild {
 		childService.update(child);
 	}
 	
+	public void delete(long id) {
+		childService.delete(id);
+	}
+	
 	public ChildService getChildDao() {
 		return childService;
 	}
 	
 	public void setChildDao(ChildService childDao) {
 		this.childService = childDao;
+	}
+
+	@Override
+	public List<Child> getChildrenOlderThan(int age) {
+		return childService.getChildrenOlderThan(age);
 	}
 }

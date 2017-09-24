@@ -3,6 +3,7 @@ package com.skaryszewski.kidsgym.entity.child;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.skaryszewski.kidsgym.entity.HibernateGenericSQL;
@@ -33,6 +34,19 @@ public class ChildService implements HibernateGenericSQL<Child> {
 		return child;
 	}
 	
+	public List<Child> getChildrenOlderThan(int age) {
+		List<Child> children = HibernateUtil.executeInTransaction(new DbOperation<List<Child>>() {
+			@SuppressWarnings("unchecked")
+			@Override
+			public List<Child> execute(final Session session) {
+				Query query = session.createQuery("from Child where age > :age");
+				query.setParameter("age", age);
+				return query.list();
+			}
+		});
+		return children;
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Child> getAll() {
@@ -50,7 +64,26 @@ public class ChildService implements HibernateGenericSQL<Child> {
 		HibernateUtil.executeInTransaction(new DbOperation<Void>() {
 			@Override
 			public Void execute(final Session session) {
-				session.update(entity);
+				Child child = (Child)session.get(Child.class, entity.getId());
+				updateChild(child, entity);
+				session.update(child);
+				return null;
+			}
+		});
+	}
+	private void updateChild(Child oldChild, Child newChild) {
+		oldChild.setName(newChild.getName());
+		oldChild.setAge(newChild.getAge());
+	}
+
+	@Override
+	public void delete(long id) {
+		HibernateUtil.executeInTransaction(new DbOperation<Void>() {
+			@Override
+			public Void execute(final Session session) {
+				Query query = session.createQuery("delete Child where id = :id");
+				query.setParameter("id", id);
+				query.executeUpdate();
 				return null;
 			}
 		});

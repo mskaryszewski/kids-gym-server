@@ -11,7 +11,9 @@ public interface RemoteChild {
 	
 	Child saveChild(Child child);
 	Child getChild(long id);
+	List<Child> getChildrenOlderThan(int age);
 	List<Child> getAllChildren();
 	void update(Child child);
+	void delete(long id);
 
 }
