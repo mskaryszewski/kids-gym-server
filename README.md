@@ -1,5 +1,5 @@
 # kids-gym-server
-Server Side of "Gym For Kids" Application
+Server Side of "Gym For Children" Application
 
 This is a multimodule Maven Enterprise Application. It's main purpose is to build an easy to extend and maintainable framework.
 It is achieved thanks to the fact that different functionalities are shipped into a separated modules which communicate with each other.
@@ -11,8 +11,8 @@ I am focused on creation a powerful skeleton of enterprise application which is 
 The structure of the application is as follows:
 -  kids-gym-entities - EJB entities to be persisted in a DB, they are exposed by DAO. It is advisable not to use DAO directly, we should use a dedicated service:
 	- Example:
-		- Person (entity) accessed by PersonDAO implementing interface with save(), get(), update() methods
-		- PersonDAO is accessed by PersonBean implementing RemotePerson interface
+		- Child (entity) accessed by ChildDAO implementing interface with save(), get(), update() methods
+		- ChildDAO is accessed by ChildBean implementing RemoteChild interface
 	- ApplicationServer is responsible for establishing a connection to a DB. In my case it is defined in jboss configuration file.
 - kids-gym-ejb which defines EJB which perform operations on entities and implement business logic
 - kids-gym-library contains all common logic used by other modules, like StringUtils, logging, guava dependency etc 

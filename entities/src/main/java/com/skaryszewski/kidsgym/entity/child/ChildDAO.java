@@ -1,4 +1,4 @@
-package com.skaryszewski.kidsgym.entity.person;
+package com.skaryszewski.kidsgym.entity.child;
 
 import java.io.Serializable;
 
@@ -8,10 +8,10 @@ import com.skaryszewski.kidsgym.entity.HibernateGenericSQL;
 import com.skaryszewski.kidsgym.entity.util.DbOperation;
 import com.skaryszewski.kidsgym.entity.util.HibernateUtil;
 
-public class PersonDAO implements HibernateGenericSQL<Person> {
+public class ChildDAO implements HibernateGenericSQL<Child> {
 
 	@Override
-	public Serializable save(final Person entity) {
+	public Serializable save(final Child entity) {
 		Serializable id = HibernateUtil.executeInTransaction(new DbOperation<Serializable>() {
 			@Override
 			public Serializable execute(final Session session) {
@@ -22,18 +22,18 @@ public class PersonDAO implements HibernateGenericSQL<Person> {
 	}
 
 	@Override
-	public Person get(final Long id) {
-		Person person = HibernateUtil.executeInTransaction(new DbOperation<Person>() {
+	public Child get(final Long id) {
+		Child child = HibernateUtil.executeInTransaction(new DbOperation<Child>() {
 			@Override
-			public Person execute(final Session session) {
-				return (Person) session.get(Person.class, id);
+			public Child execute(final Session session) {
+				return (Child) session.get(Child.class, id);
 			}
 		});
-		return person;
+		return child;
 	}
 
 	@Override
-	public void update(final Person entity) {
+	public void update(final Child entity) {
 		HibernateUtil.executeInTransaction(new DbOperation<Void>() {
 			@Override
 			public Void execute(final Session session) {
