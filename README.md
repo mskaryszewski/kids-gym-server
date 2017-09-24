@@ -4,6 +4,8 @@ Server Side of "Gym For Children" Application
 This is a multimodule Maven Enterprise Application. It's main purpose is to build an easy to extend and maintainable framework.
 It is achieved thanks to the fact that different functionalities are shipped into a separated modules which communicate with each other.
 
+You can communicate with this application in 2 ways: either call RESTful web service or call a remote EJB.
+
 While reading the code you might wonder where are the functionalities of kids-gym-app, an application for booking gym classes for children.
 You are right, they are not there. Actually it's not the purpose of this project.
 I am focused on creation a powerful skeleton of enterprise application which is maintainable and well structured. This is what fascinates me the most - pure architecture, good practices and cooperation between modules. When I achieve that (well defined communication to RDBMS and noSQL database, RESTful Web Service, exposed remote services etc.), coding the logic of (any) application will be a piece of cake.

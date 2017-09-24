@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 
 	<name>kids-gym-server</name>
-	<description>Server side of gym for kids application</description>
+	<description>Server side of application exposing functionality to book gym classes for children</description>
 	<inceptionYear>2017</inceptionYear>
 
 	<modules>
