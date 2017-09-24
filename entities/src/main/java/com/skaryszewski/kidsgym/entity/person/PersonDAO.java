@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 import org.hibernate.Session;
 
+import com.skaryszewski.kidsgym.entity.HibernateGenericSQL;
 import com.skaryszewski.kidsgym.entity.util.DbOperation;
 import com.skaryszewski.kidsgym.entity.util.HibernateUtil;
 
-public class PersonDAO implements PersonSQL {
+public class PersonDAO implements HibernateGenericSQL<Person> {
 
 	@Override
 	public Serializable save(final Person entity) {
@@ -29,17 +30,6 @@ public class PersonDAO implements PersonSQL {
 			}
 		});
 		return person;
-	}
-
-	@Override
-	public Integer getNumberOfAllPersons() {
-		Integer numberOfPersons = HibernateUtil.executeInTransaction(new DbOperation<Integer>() {
-			@Override
-			public Integer execute(final Session session) {
-				return (Integer) session.createSQLQuery("select count(*) from person").list().get(0);
-			}
-		});
-		return numberOfPersons;
 	}
 
 	@Override
