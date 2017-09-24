@@ -26,6 +26,16 @@
 			<version>2.2.1.GA</version>
 		    <scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.kidsgym</groupId>
+			<artifactId>kids-gym-entities</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.kidsgym</groupId>
+			<artifactId>kids-gym-ejb</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	
 	<build>

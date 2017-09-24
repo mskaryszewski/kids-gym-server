@@ -1,31 +1,47 @@
 package com.skaryszewski.kidsgym.beans;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 
 import com.skaryszewski.kidsgym.entity.child.Child;
-import com.skaryszewski.kidsgym.entity.child.ChildDAO;
+import com.skaryszewski.kidsgym.entity.child.ChildService;
 
 @Stateless
 public class ChildBean implements RemoteChild {
 	
-	private ChildDAO childDao;
+	private ChildService childService;
 	
 	public ChildBean() {
-		childDao = new ChildDAO();
+		childService = new ChildService();
+	}
+	
+	@Override
+	public Child getChild(long id) {
+		return childService.get(id);
 	}
 
 	@Override
-	public Child saveChild() {
-		Child child = new Child();
-		childDao.save(child);
+	public Child saveChild(Child child) {
+		childService.save(child);
 		return child;
 	}
 	
-	public ChildDAO getChildDao() {
-		return childDao;
+	@Override
+	public List<Child> getAllChildren() {
+		return childService.getAll();
+	}
+
+	@Override
+	public void update(Child child) {
+		childService.update(child);
 	}
 	
-	public void setChildDao(ChildDAO childDao) {
-		this.childDao = childDao;
+	public ChildService getChildDao() {
+		return childService;
+	}
+	
+	public void setChildDao(ChildService childDao) {
+		this.childService = childDao;
 	}
 }

@@ -1,6 +1,7 @@
 package com.skaryszewski.kidsgym.entity.child;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.Session;
 
@@ -8,7 +9,7 @@ import com.skaryszewski.kidsgym.entity.HibernateGenericSQL;
 import com.skaryszewski.kidsgym.entity.util.DbOperation;
 import com.skaryszewski.kidsgym.entity.util.HibernateUtil;
 
-public class ChildDAO implements HibernateGenericSQL<Child> {
+public class ChildService implements HibernateGenericSQL<Child> {
 
 	@Override
 	public Serializable save(final Child entity) {
@@ -30,6 +31,18 @@ public class ChildDAO implements HibernateGenericSQL<Child> {
 			}
 		});
 		return child;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Child> getAll() {
+		List<Child> children = HibernateUtil.executeInTransaction(new DbOperation<List<Child>>() {
+			@Override
+			public List<Child> execute(final Session session) {
+				return session.createCriteria(Child.class).list();
+			}
+		});
+		return children;
 	}
 
 	@Override
