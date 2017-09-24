@@ -27,7 +27,7 @@ public enum ServiceUtil {
 		try {
 			context = new InitialContext(properties);
 		} catch (NamingException e) {
-			System.out.println("Context was not built correctly " + e.getMessage());
+			throw new RuntimeException(e);
 		}
 	}
 	
