@@ -4,11 +4,11 @@ Skeleton of Enterprise Application integrating features like connection to datab
 This is a multimodule Maven Enterprise Application. It's main purpose is to build an easy to extend and maintainable framework.
 It is achieved thanks to the fact that different functionalities are shipped into a separated modules which communicate with each other.
 
-You can communicate with this application in 2 ways: you can either call RESTful web service or you can call a remote EJB.
+You can integrate with this application in 2 ways: you can either call RESTful web service or you can call a remote EJB.
 
 While reading the code you might wonder where are the functionalities of kids-gym-app, an application for booking gym classes for children.
 You are right, they are not there. Actually it's not the purpose of this project.
-I am focused on creation a powerful skeleton of enterprise application which is maintainable and well structured. This is what fascinates me the most - pure architecture, good practices and cooperation between modules. When I achieve that (well defined communication to RDBMS and noSQL database, RESTful Web Service, exposed remote services etc.), coding the logic of (any) application will be a piece of cake.
+The main focus of this project is to create a powerful skeleton of enterprise application which is extensible, maintainable and well structured. When this goal is achieved (well defined communication to RDBMS and noSQL database (Cassandra), RESTful Web Service, exposed remote services etc.), coding the business logic of (in fact almost any) application will be a piece of cake.
 
 The structure of the application is as follows:
 - kids-gym-restful exposes web services with REST API
