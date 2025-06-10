@@ -1,26 +1,31 @@
 # kids-gym-server
-Skeleton of Enterprise Application integrating features like connection to database, exposing REST API and EJB.
+Enterprise Application Skeleton
 
-This is a multimodule Maven Enterprise Application. It's main purpose is to build an easy to extend and maintainable framework.
-It is achieved thanks to the fact that different functionalities are shipped into a separated modules which communicate with each other.
+A multi-module Maven enterprise application designed for extensibility, maintainability, and structured development. It integrates key features such as database connectivity, REST API exposure, and EJB-based services.
 
-You can integrate with this application in 2 ways: you can either call RESTful web service or you can call a remote EJB.
+Integration Methods
 
-While reading the code you might wonder where are the functionalities of kids-gym-app, an application for booking gym classes for children.
-You are right, they are not there. Actually it's not the purpose of this project.
-The main focus of this project is to create a powerful skeleton of enterprise application which is extensible, maintainable and well structured. When this goal is achieved (well defined communication to RDBMS and noSQL database (Cassandra), RESTful Web Service, exposed remote services etc.), coding the business logic of (in fact almost any) application will be a piece of cake.
+This application supports two integration approaches:
 
-The structure of the application is as follows:
-- kids-gym-restful exposes web services with REST API
-- kids-gym-entities - EJB entities to be persisted in a DB, they are exposed by DAO. It is advisable not to use DAO directly, we should use a dedicated service:
+RESTful Web Services – Direct API calls for seamless interaction.
+
+Remote EJB – Enables distributed service execution.
+
+Project Purpose
+
+Unlike a fully developed business application, this project serves as a scalable framework rather than implementing specific functionalities like those in the kids-gym-app. The goal is to establish a robust foundation with well-defined communication to RDBMS and NoSQL databases (Cassandra), RESTful services, and remote EJBs, making future business logic implementation effortless.
+
+Application Structure
+- kids-gym-restful - Exposes web services via REST API
+- kids-gym-entities - Defines EJB entities for database persistence, accessed via DAO and dedicated services:
 	- Example:
-		- Child (entity) accessed by ChildDAO implementing interface with save(), get(), update() methods
-		- ChildDAO is accessed by ChildBean implementing RemoteChild interface
-	- ApplicationServer is responsible for establishing a connection to a DB. In my case it is defined in jboss configuration file.
-- kids-gym-ejb which defines EJB which perform operations on entities and implement business logic
-- kids-gym-library contains all common logic used by other modules, like StringUtils, logging, guava dependency etc 
-- kids-gym-resources contains all resources used by application
-- kids-gym-config contains config files that are not shipped to an application - they are not part of .ear file. E.g.: standalone.xml jboss config file which should be versioned but is not a part of application itself
-- kids-gym-app is a module which wraps all dependencies and build .ear file to be deployed on application server
-- kids-gym-client-standalone is an example of standalone client which by remote calls uses remote services. It is not dependent on full kids-gym-ejb module because it should not be aware of any real implementations. It is only dependent on interfaces - it uses only 'client' version of module containing just the interfaces.
-- kids-gym-server is a parent module which forces all other modules to be compiled and defines which java version shall be used
+		- ChildDAO implements an interface with save(), get(), and update() methods
+		- ChildBean accesses ChildDAO via RemoteChild interface
+	- ApplicationServer Manages database connections, configured via JBoss.
+- kids-gym-ejb - Implements business logic and entity operations
+- kids-gym-library - Houses shared utilities like StringUtils, logging, and dependencies
+- kids-gym-resources - Stores application resources
+- kids-gym-config - Contains configuration files not included in the .ear package (e.g., standalone.xml for JBoss)
+- kids-gym-app - Aggregates dependencies and builds the .ear file for deployment on the application server
+- kids-gym-client-standalone - Provides a standalone client for remote service calls, relying solely on interfaces rather than full kids-gym-ejb implementations
+- kids-gym-server - Serves as the parent module, ensuring compilation of all submodules and defining the required Java version
